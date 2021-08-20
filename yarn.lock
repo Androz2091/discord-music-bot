@@ -128,6 +128,11 @@ boolbase@^1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
+bpad@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/bpad/-/bpad-0.1.0.tgz#9de54d53dbf79eb387deee8230a17b1a364bce51"
+  integrity sha512-swWZGFfDDtFPKtV39jp9g3AGZjZIZw7YomXUOVOvjq7cyivzMpcNhvfaAOzPTtp90TZWoFfZmO/KcRK0ZhBS0w==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -472,6 +477,13 @@ make-dir@^3.1.0:
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
   dependencies:
     semver "^6.0.0"
+
+mdtable@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/mdtable/-/mdtable-0.3.1.tgz#4c30a41a82ef57aedd052384463678abe072367e"
+  integrity sha512-JqCIsUH+o2boyDSUQq570qFoTbRjl0yXUtBbJNVWwwf1rjMFolUb4EFX5DQsi5i2nv5pUmvLjgBzqhMlOjY7dw==
+  dependencies:
+    bpad "^0.1.0"
 
 mime-db@1.49.0:
   version "1.49.0"

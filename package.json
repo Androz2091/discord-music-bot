@@ -12,5 +12,8 @@
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "slash-create": "^4.0.1"
+  },
+  "devDependencies": {
+    "mdtable": "^0.3.1"
   }
 }

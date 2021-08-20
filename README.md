@@ -7,6 +7,24 @@ The perfect music bot for your Discord server! 🤘
 * Slash Commands
 * YouTube, SoundCloud, Facebook and Vimeo support
 
+## Commands
+
+Here are all the available commands in the bot!
+
+|      Name       |            Description            | Options  |
+|:----------------|:---------------------------------:|---------:|
+| **/bassboost**  |     Toggles bassboost filter      |          |
+|    **/loop**    |          Sets loop mode           |  <mode>  |
+|     **/np**     | See what's currently being played |          |
+|   **/pause**    |      Pause the current song       |          |
+|    **/play**    |     Plays a song from youtube     | <query>  |
+|   **/queue**    |           See the queue           |          |
+|   **/resume**   |      Resume the current song      |          |
+|    **/skip**    |     Skip to the current song      |          |
+| **/soundcloud** |   Plays a song from soundcloud    | <query>  |
+|    **/stop**    |          Stop the player          |          |
+|   **/volume**   |         Sets music volume         | <amount> |
+
 ## About
 
 The project uses the following libraries:

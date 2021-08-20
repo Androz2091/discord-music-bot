@@ -4,6 +4,7 @@ const { SlashCreator, GatewayServer } = require('slash-create');
 const { Client } = require('discord.js');
 const { Player } = require('discord-player');
 const { registerPlayerEvents } = require('./events');
+const { generateDocs } = require('./docs');
 
 dotenv.config();
 
@@ -24,6 +25,9 @@ const creator = new SlashCreator({
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+
+    console.log('Generating docs...');
+    generateDocs(creator.commands);
 });
 
 creator
