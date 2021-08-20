@@ -37,4 +37,5 @@ creator
 
 client.login(process.env.DISCORD_CLIENT_TOKEN);
 
-module.exports = client;
+module.exports.client = client;
+module.exports.creator = creator;

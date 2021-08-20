@@ -17,9 +17,9 @@ module.exports = class extends SlashCommand {
         });
     }
 
-    async run(ctx) {
+    async run (ctx, isSoundcloud) {
 
-        const client = require('..');
+        const { client } = require('..');
 
         await ctx.defer();
 
@@ -29,12 +29,12 @@ module.exports = class extends SlashCommand {
         const searchResult = await client.player
             .search(query, {
                 requestedBy: ctx.user,
-                searchEngine: ctx.commandName === "soundcloud" ? QueryType.SOUNDCLOUD_SEARCH : QueryType.AUTO
+                searchEngine: isSoundcloud ? QueryType.SOUNDCLOUD_SEARCH : QueryType.AUTO
             })
             .catch(() => {
                 console.log('he')
             });
-        if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: "No results were found!" });
+            if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: "No results were found!" });
 
         const queue = await client.player.createQueue(guild, {
             metadata: channel
