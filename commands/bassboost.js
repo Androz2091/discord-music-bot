@@ -3,16 +3,8 @@ const { SlashCommand, CommandOptionType } = require('slash-create');
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "play",
-            description: "Plays a song from youtube",
-            options: [
-                {
-                    name: "query",
-                    type: CommandOptionType.STRING,
-                    description: "The song you want to play",
-                    required: true
-                }
-            ]
+            name: "bassboost",
+            description: "Toggles bassboost filter"
         });
     }
 
