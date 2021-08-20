@@ -7,6 +7,8 @@
   "author": "Androz2091 <androz2091@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@discord-player/downloader": "^3.0.1",
+    "@discord-player/extractor": "^3.0.2",
     "@discordjs/opus": "^0.6.0",
     "discord-player": "^5.0.2",
     "discord.js": "^13.1.0",
