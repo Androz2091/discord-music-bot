@@ -16,13 +16,13 @@ module.exports = class extends SlashCommand {
 
         await ctx.defer();
 
-        const queue = client.player.getQueue(interaction.guildId);
-        if (!queue || !queue.playing) return void interaction.sendFollowUp({ content: "❌ | No music is being played!" });
+        const queue = client.player.getQueue(ctx.guildID);
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
         await queue.setFilters({
             bassboost: !queue.getFiltersEnabled().includes("bassboost"),
             normalizer2: !queue.getFiltersEnabled().includes("bassboost") // because we need to toggle it with bass
         });
 
-        return void interaction.sendFollowUp({ content: `🎵 | Bassboost ${queue.getFiltersEnabled().includes("bassboost") ? "Enabled" : "Disabled"}!` });
+        return void ctx.sendFollowUp({ content: `🎵 | Bassboost ${queue.getFiltersEnabled().includes("bassboost") ? "Enabled" : "Disabled"}!` });
     }
 }
