@@ -17,7 +17,7 @@ module.exports = class extends SlashCommand {
         });
     }
 
-    async run (ctx, isSoundcloud) {
+    async run (ctx) {
 
         const { client } = require('..');
 
@@ -29,7 +29,7 @@ module.exports = class extends SlashCommand {
         const searchResult = await client.player
             .search(query, {
                 requestedBy: ctx.user,
-                searchEngine: isSoundcloud ? QueryType.SOUNDCLOUD_SEARCH : QueryType.AUTO
+                searchEngine: QueryType.AUTO
             })
             .catch(() => {
                 console.log('he')

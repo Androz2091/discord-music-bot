@@ -8,7 +8,7 @@ The perfect music bot for your Discord server! 🎶
 
 * Simple & easy to use 🤘
 * Audio filters (bassboost) 🎸
-* YouTube, SoundCloud, Facebook and Vimeo support 🌌
+* YouTube, Facebook and Vimeo support 🌌
 * Slash Commands support 🤖
 * Play in multiple servers at the same time 🚗
 
@@ -16,23 +16,22 @@ The perfect music bot for your Discord server! 🎶
 
 Here are all the available commands in the bot!
 
-|      Name       |            Description            |  Options  |
-|:----------------|:---------------------------------:|----------:|
-|    **/back**    |     Plays the previous track      |           |
-| **/bassboost**  |     Toggles bassboost filter      |           |
-|    **/jump**    |     Jumps to a specific track     | \<tracks> |
-|    **/loop**    |          Sets loop mode           |  \<mode>  |
-|     **/np**     | See what's currently being played |           |
-|   **/pause**    |      Pause the current song       |           |
-|    **/play**    |     Plays a song from youtube     | \<query>  |
-|   **/queue**    |           See the queue           |           |
-|   **/resume**   |      Resume the current song      |           |
-|    **/seek**    |      Seeks to the given time      |  \<time>  |
-|  **/shuffle**   |        Shuffles the queue         |           |
-|    **/skip**    |     Skip to the current song      |           |
-| **/soundcloud** |   Plays a song from soundcloud    | \<query>  |
-|    **/stop**    |          Stop the player          |           |
-|   **/volume**   |         Sets music volume         | \<amount> |
+|      Name      |            Description            |  Options  |
+|:---------------|:---------------------------------:|----------:|
+|   **/back**    |     Plays the previous track      |           |
+| **/bassboost** |     Toggles bassboost filter      |           |
+|   **/jump**    |     Jumps to a specific track     | \<tracks> |
+|   **/loop**    |          Sets loop mode           |  \<mode>  |
+|    **/np**     | See what's currently being played |           |
+|   **/pause**   |      Pause the current song       |           |
+|   **/play**    |     Plays a song from youtube     | \<query>  |
+|   **/queue**   |           See the queue           |           |
+|  **/resume**   |      Resume the current song      |           |
+|   **/seek**    |      Seeks to the given time      |  \<time>  |
+|  **/shuffle**  |        Shuffles the queue         |           |
+|   **/skip**    |     Skip to the current song      |           |
+|   **/stop**    |          Stop the player          |           |
+|  **/volume**   |         Sets music volume         | \<amount> |
 
 ## About
 
