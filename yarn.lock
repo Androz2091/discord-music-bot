@@ -88,10 +88,10 @@
     "@discordjs/node-pre-gyp" "^0.4.1"
     node-addon-api "^4.0.0"
 
-"@discordjs/voice@^0.5.5":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@discordjs/voice/-/voice-0.5.6.tgz#78d52567acacab28411fca1dbf8fe3f7b6cc86d3"
-  integrity sha512-CGwD5pz1YB8MXfERcXQ6jVCThfMjzPKbad8pYuvPt4ozFcLWGRKFJ5lj+CSRNDj0Cobc6MIKOKpFfOPlXTKTrw==
+"@discordjs/voice@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/@discordjs/voice/-/voice-0.6.0.tgz#ea03632c6ee35f9a739cf35364432d3e0fc30980"
+  integrity sha512-DF2fZAnB8gX3Qz5BEWPOUl565ptpda1uVmXJije4iK5aQrECfkqc6XcI+wzbGaNvzsH1Wb76NPzxngsEw8bblw==
   dependencies:
     "@types/ws" "^7.4.4"
     discord-api-types "^0.22.0"
@@ -559,15 +559,15 @@ discord-api-types@^0.22.0:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.22.0.tgz#34dc57fe8e016e5eaac5e393646cd42a7e1ccc2a"
   integrity sha512-l8yD/2zRbZItUQpy7ZxBJwaLX/Bs2TGaCthRppk8Sw24LOIWg12t9JEreezPoYD0SQcC2htNNo27kYEpYW/Srg==
 
-discord-player@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-5.0.2.tgz#3d4e3b669871076b602a744382abcee52296037a"
-  integrity sha512-17iTtTExDzX1XXScZ7AmC2eRduLkeFv8o4kYYMMp6YS9IZVH4+/LerEGLdGAO+pVWChWXFIxwHVTinrZjhSU3Q==
+discord-player@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/discord-player/-/discord-player-5.1.0.tgz#7964f9d0cc195da1ca3c327f8d25dfbbb806f1ee"
+  integrity sha512-Rp+A/k8sm3h+MfTxhdGZjFsEK26lf5YcyBhiLgEGvh/aRRxw7z9+twnIyEPHQC8gtTiZHlfHD7ihztKFT/XJCQ==
   dependencies:
-    "@discordjs/voice" "^0.5.5"
+    "@discordjs/voice" "^0.6.0"
     discord-ytdl-core "^5.0.4"
     libsodium-wrappers "^0.7.9"
-    soundcloud-scraper "^5.0.1"
+    soundcloud-scraper "^5.0.2"
     spotify-url-info "^2.2.3"
     tiny-typed-emitter "^2.1.0"
     youtube-sr "^4.1.7"
@@ -1660,10 +1660,10 @@ slash-create@^4.0.1:
     require-all "^3.0.0"
     tweetnacl "^1.0.3"
 
-soundcloud-scraper@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/soundcloud-scraper/-/soundcloud-scraper-5.0.1.tgz#4872d3c09d7cac40a81c99b3c509095ab17bcbcc"
-  integrity sha512-f3JxM/afLRumaT06YsLs8u/WtXDZYvMBis7kB3+rFcx0cyJeu825D3b8D3oTSflNWeFgbGt2+QRrvsXnUi/n1Q==
+soundcloud-scraper@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmjs.org/soundcloud-scraper/-/soundcloud-scraper-5.0.2.tgz#3ec6bc74688869164eb7ca1b0759078e09e1d8c2"
+  integrity sha512-QAPvRIG4eefc7JdmCQCG/QEhm4D90XgHbe9lJMHmKIxU0INdAD2LycUR1m0mCIKF3F2dk4NvGEkxGfVLI8Af+A==
   dependencies:
     cheerio "^1.0.0-rc.10"
     m3u8stream "^0.8.4"
