@@ -11,7 +11,9 @@ module.exports = class extends SlashCommand {
                     description: "The number of tracks to skip",
                     type: CommandOptionType.INTEGER
                 }
-            ]
+            ],
+            
+            guildIDs: process.env.DISCORD_GUILD_ID ? [ process.env.DISCORD_GUILD_ID ] : undefined
         });
     }
 

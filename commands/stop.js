@@ -4,7 +4,9 @@ module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "stop",
-            description: "Stop the player"
+            description: "Stop the player",
+
+            guildIDs: process.env.DISCORD_GUILD_ID ? [ process.env.DISCORD_GUILD_ID ] : undefined
         });
     }
 

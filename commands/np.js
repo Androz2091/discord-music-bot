@@ -4,7 +4,9 @@ module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "np",
-            description: "See what's currently being played"
+            description: "See what's currently being played",
+
+            guildIDs: process.env.DISCORD_GUILD_ID ? [ process.env.DISCORD_GUILD_ID ] : undefined
         });
     }
 
