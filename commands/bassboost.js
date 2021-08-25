@@ -23,6 +23,8 @@ module.exports = class extends SlashCommand {
             normalizer2: !queue.getFiltersEnabled().includes("bassboost") // because we need to toggle it with bass
         });
 
-        return void ctx.sendFollowUp({ content: `🎵 | Bassboost ${queue.getFiltersEnabled().includes("bassboost") ? "Enabled" : "Disabled"}!` });
+        setTimeout(() => {
+            return void ctx.sendFollowUp({ content: `🎵 | Bassboost ${queue.getFiltersEnabled().includes("bassboost") ? "Enabled" : "Disabled"}!` });
+        }, queue.options.bufferingTimeout);
     }
 }
