@@ -36,8 +36,10 @@ creator
             (handler) => client.ws.on('INTERACTION_CREATE', handler)
         )
     )
-    .registerCommandsIn(path.join(__dirname, 'commands'))
-    .syncCommands();
+    .registerCommandsIn(path.join(__dirname, 'commands'));
+
+if (process.env.DISCORD_GUILD_ID) creator.syncCommandsIn(process.env.DISCORD_GUILD_ID);
+else creator.syncCommands();
 
 client.login(process.env.DISCORD_CLIENT_TOKEN);
 
