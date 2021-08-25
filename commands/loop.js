@@ -9,7 +9,7 @@ module.exports = class extends SlashCommand {
             options: [
                 {
                     name: "mode",
-                    type: "INTEGER",
+                    type: CommandOptionType.INTEGER,
                     description: "Loop type",
                     required: true,
                     choices: [
