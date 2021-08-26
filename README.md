@@ -45,6 +45,7 @@ The project uses the following libraries:
 
 ## Installation
 
+* Install [FFMPEG](https://ffmpeg.org).
 * Clone the repository. (`git clone https://github.com/Androz2091/discord-music-bot`)
 * Copy the `.env.example` file as `.env` and fill it.
  - `DISCORD_CLIENT_ID` is the ID of your Discord BOT
