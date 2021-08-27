@@ -45,6 +45,7 @@ The project uses the following libraries:
 
 ## Installation
 
+### Manual
 * Install [FFMPEG](https://ffmpeg.org).
 * Clone the repository. (`git clone https://github.com/Androz2091/discord-music-bot`)
 * Copy the `.env.example` file as `.env` and fill it.
@@ -52,3 +53,24 @@ The project uses the following libraries:
  - `DISCORD_CLIENT_TOKEN` is the token of your Discord BOT
 * Install the dependencies. (`yarn install` or `npm install`)
 * Start the bot! (`node .`)
+
+### Docker 
+* Copy the `.env.example` file as `.env` and fill it.
+```sh
+docker build . -t discord-music-bot
+docker run -d --env-file .env discord-music-bot 
+```
+
+### Example with docker-compose
+```
+version: '2'
+
+services:
+  bot:
+    build: .
+    environment:
+      DISCORD_CLIENT_ID: ""
+      DISCORD_CLIENT_TOKEN: ""
+      DISCORD_CLIENT_PUBKEY: ""
+      DISCORD_GUILD_ID: ""
+```
