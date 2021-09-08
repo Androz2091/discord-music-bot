@@ -16,11 +16,11 @@ module.exports = class extends SlashCommand {
 
         await ctx.defer();
 
-        const queue = client.player.getQueue(interaction.guildId);
-        if (!queue || !queue.playing) return void interaction.sendFollowUp({ content: "❌ | No music is being played!" });
+        const queue = client.player.getQueue(ctx.guildID);
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
         
         await queue.shuffle();
         
-        interaction.sendFollowUp({ content: "✅ | Queue has been shuffled!" });
+        ctx.sendFollowUp({ content: "✅ | Queue has been shuffled!" });
     }
 }
