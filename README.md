@@ -20,13 +20,15 @@ Here are all the available commands in the bot!
 |:---------------|:-----------------------------------:|----------:|
 |   **/back**    |      Plays the previous track       |           |
 | **/bassboost** |      Toggles bassboost filter       |           |
+|   **/clear**   |      Clear the current queue.       |           |
 |   **/jump**    |      Jumps to a specific track      | \<tracks> |
 |   **/loop**    |           Sets loop mode            |  \<mode>  |
 |    **/np**     |  See what's currently being played  |           |
 |   **/pause**   |       Pause the current song        |           |
 |   **/play**    |      Plays a song from youtube      | \<query>  |
 | **/playnext**  | Adds a song to the top of the queue | \<query>  |
-|   **/queue**   |            See the queue            |           |
+|   **/queue**   |            See the queue            |  \<page>  |
+|  **/remove**   |       Remove a specific track       | \<track>  |
 |  **/resume**   |       Resume the current song       |           |
 |   **/seek**    |       Seeks to the given time       |  \<time>  |
 |  **/shuffle**  |         Shuffles the queue          |           |
