@@ -13,6 +13,7 @@
     "discord-player": "^5.1.0",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
+    "opusscript": "^0.0.8",
     "slash-create": "^4.0.1"
   },
   "devDependencies": {
