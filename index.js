@@ -19,7 +19,7 @@ client.player = new Player(client, {
     ytdlOptions: {
         requestOptions: {
             headers: {
-                Cookie: process.env.COOKIES
+                Cookie: process.env.COOKIES ?? ""
             }
         }
     }
