@@ -15,7 +15,15 @@ const client = new Client({
     ]
 });
 
-client.player = new Player(client);
+client.player = new Player(client, {
+    ytdlOptions: {
+        requestOptions: {
+            headers: {
+                Cookie: process.env.COOKIES
+            }
+        }
+    }
+});
 registerPlayerEvents(client.player);
 
 const creator = new SlashCreator({
