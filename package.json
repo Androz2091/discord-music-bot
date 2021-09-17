@@ -6,6 +6,9 @@
   "repository": "https://github.com/Androz2091/discord-music-bot",
   "author": "Androz2091 <androz2091@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "@discord-player/downloader": "^3.0.1",
     "@discord-player/extractor": "^3.0.2",
