@@ -21,6 +21,7 @@ Here are all the available commands in the bot!
 |   **/back**    |      Plays the previous track       |           |
 | **/bassboost** |      Toggles bassboost filter       |           |
 |   **/clear**   |      Clear the current queue.       |           |
+|  **/history**  |      display the queue history      |  \<page>  |
 |   **/jump**    |      Jumps to a specific track      | \<tracks> |
 |   **/loop**    |           Sets loop mode            |  \<mode>  |
 |    **/np**     |  See what's currently being played  |           |
