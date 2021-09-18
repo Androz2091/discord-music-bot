@@ -25,11 +25,11 @@ module.exports = class extends SlashCommand {
             embeds: [
                 {
                     title: "Now Playing",
-                    description: `🎶 | **${queue.current.title}**! (\`${perc.progress}%\`)`,
+                    description: `🎶 | **${queue.current.title}**! (\`${perc.progress == "Infinity" ? "Live" : perc.progress + "%"}\`)`,
                     fields: [
                         {
                             name: "\u200b",
-                            value: progress
+                            value: progress.replace(/ 0:00/g, " ◉ LIVE")
                         }
                     ],
                     color: 0xffffff
