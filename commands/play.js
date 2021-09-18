@@ -28,6 +28,14 @@ module.exports = class extends SlashCommand {
         const guild = client.guilds.cache.get(ctx.guildID);
         const channel = guild.channels.cache.get(ctx.channelID);
         const query = ctx.options.query;
+        let isLink = true;
+        let url;  
+        try {
+            url = new URL(String(query));
+        } catch (_) {
+            isLink = false; 
+        }
+        if (isLink && !String(query).includes("spotify.com") && !String(query).includes("fb.watch") && !String(query).includes("fb.gg") && !String(query).includes("facebook.com") && !String(query).includes("vimeo.com")) return void ctx.sendFollowUp({ content: 'This bot only supports YouTube, Facebook and Vimeo!' });
         const searchResult = await client.player
             .search(query, {
                 requestedBy: ctx.user,
