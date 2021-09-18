@@ -1,4 +1,4 @@
-const { SlashCommand, CommandOptionType } = require('slash-create');
+const { SlashCommand } = require('slash-create');
 
 module.exports = class extends SlashCommand {
     constructor(creator) {

@@ -1,9 +1,9 @@
 const dotenv = require('dotenv');
-const path = require('path');
+const path = require('path');
 const { SlashCreator, GatewayServer } = require('slash-create');
-const { Client } = require('discord.js');
-const { Player } = require('../discord-player');
-const { registerPlayerEvents } = require('./events');
+const { Client } = require('discord.js');
+const { Player } = require('discord-player');
+const { registerPlayerEvents } = require('./events');
 const { generateDocs } = require('./docs');
 
 dotenv.config();
