@@ -1,5 +1,7 @@
 const { SlashCommand, CommandOptionType} = require('slash-create');
 
+const PAGE_SIZE = 10;
+
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
@@ -25,13 +27,14 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
         const queue = client.player.getQueue(ctx.guildID);
         if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
-        if (!ctx.options.page) ctx.options.page = 1;
-        const pageStart = 10 * (ctx.options.page - 1);
-        const pageEnd = pageStart + 10;
+        const curPage = ctx.options.page || 1;
+        const pageStart = PAGE_SIZE * (curPage - 1);
+        const pageEnd = pageStart + PAGE_SIZE;
         const currentTrack = queue.current;
         const tracks = queue.tracks.slice(pageStart, pageEnd).map((m, i) => {
             return `${i + pageStart + 1}. **${m.title}** ([link](${m.url}))`;
         });
+        const totalPages = Math.ceil(queue.tracks.length / PAGE_SIZE);
 
         return void ctx.sendFollowUp({
             embeds: [
@@ -43,7 +46,10 @@ module.exports = class extends SlashCommand {
                             : ''
                     }`,
                     color: 0xff0000,
-                    fields: [{ name: 'Now Playing', value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }]
+                    fields: [
+                        { name: 'Page', value: `${curPage} / ${totalPages}` },
+                        { name: 'Now Playing', value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }
+                    ]
                 }
             ]
         });

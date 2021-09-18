@@ -8,7 +8,7 @@ module.exports.registerPlayerEvents = (player) => {
     });
 
     player.on("trackStart", (queue, track) => {
-        queue.metadata.send(`🎶 | Started playing: **${track.title}** in **${queue.connection.channel.name}**!`);
+        queue.metadata.send(`🎶 | Now playing: **${track.title}** in **${queue.connection.channel.name}**!`);
     });
 
     player.on("trackAdd", (queue, track) => {
