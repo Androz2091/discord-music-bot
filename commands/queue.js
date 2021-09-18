@@ -3,13 +3,13 @@ const { SlashCommand, CommandOptionType} = require('slash-create');
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "queue",
-            description: "See the queue",
+            name: 'queue',
+            description: 'See the queue',
             options: [
                 {
-                    name: "page",
+                    name: 'page',
                     type: CommandOptionType.INTEGER,
-                    description: "Specific page number in queue",
+                    description: 'Specific page number in queue',
                     required: false
                 }
             ],
@@ -24,7 +24,7 @@ module.exports = class extends SlashCommand {
         
         await ctx.defer();
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
         if (!ctx.options.page) ctx.options.page = 1;
         const pageStart = 10 * (ctx.options.page - 1);
         const pageEnd = pageStart + 10;
@@ -36,17 +36,17 @@ module.exports = class extends SlashCommand {
         return void ctx.sendFollowUp({
             embeds: [
                 {
-                    title: "Server Queue",
-                    description: `${tracks.join("\n")}${
+                    title: 'Server Queue',
+                    description: `${tracks.join('\n')}${
                         queue.tracks.length > pageEnd
                             ? `\n...${queue.tracks.length - pageEnd} more track(s)`
-                            : ""
+                            : ''
                     }`,
                     color: 0xff0000,
-                    fields: [{ name: "Now Playing", value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }]
+                    fields: [{ name: 'Now Playing', value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }]
                 }
             ]
         });
 
     }
-}
+};

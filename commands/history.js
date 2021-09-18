@@ -3,13 +3,13 @@ const { SlashCommand, CommandOptionType} = require('slash-create');
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "history",
-            description: "Display the queue history",
+            name: 'history',
+            description: 'Display the queue history',
             options: [
                 {
-                    name: "page",
+                    name: 'page',
                     type: CommandOptionType.INTEGER,
-                    description: "Specific page number in queue history",
+                    description: 'Specific page number in queue history',
                     required: false
                 }
             ],
@@ -24,7 +24,7 @@ module.exports = class extends SlashCommand {
         
         await ctx.defer();
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
         if (!ctx.options.page) ctx.options.page = 1;
         const pageEnd = (-10 * (ctx.options.page - 1)) - 1;
         const pageStart = (pageEnd - 10);
@@ -36,17 +36,17 @@ module.exports = class extends SlashCommand {
         return void ctx.sendFollowUp({
             embeds: [
                 {
-                    title: "Server Queue History",
-                    description: `${tracks.join("\n")}${
+                    title: 'Server Queue History',
+                    description: `${tracks.join('\n')}${
                         queue.previousTracks.length > (pageStart * -1)
                             ? `\n...${(queue.previousTracks.length + pageStart)} more track(s)`
-                            : ""
+                            : ''
                     }`,
                     color: 0xff0000,
-                    fields: [{ name: "Now Playing", value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }]
+                    fields: [{ name: 'Now Playing', value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }]
                 }
             ]
         });
 
     }
-}
+};

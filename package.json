@@ -19,6 +19,7 @@
     "slash-create": "^4.0.1"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
     "mdtable": "^0.3.1"
   }
 }
