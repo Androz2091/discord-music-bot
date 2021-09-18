@@ -55,7 +55,7 @@ The project uses the following libraries:
  - `DISCORD_CLIENT_ID` is the ID of your Discord BOT
  - `DISCORD_CLIENT_TOKEN` is the token of your Discord BOT
 * Install the dependencies. (`yarn install` or `npm install`)
-* Start the bot! (`node .`)
+* Start the bot! (`yarn start` or `npm start` or `node .`)
 
 ### Docker 
 * Copy the `.env.example` file as `.env` and fill it.
