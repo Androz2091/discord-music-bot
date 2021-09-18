@@ -26,6 +26,8 @@ const creator = new SlashCreator({
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 
+    client.user.setActivity('you sleep at night', { type: 'WATCHING' });
+
     console.log('Generating docs...');
     generateDocs(creator.commands);
 });
