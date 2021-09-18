@@ -4,12 +4,12 @@ module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "history",
-            description: "display the queue history",
+            description: "Display the queue history",
             options: [
                 {
                     name: "page",
                     type: CommandOptionType.INTEGER,
-                    description: "display specified page number in queue history",
+                    description: "Specific page number in queue history",
                     required: false
                 }
             ],

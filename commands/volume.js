@@ -4,7 +4,7 @@ module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "volume",
-            description: "Sets music volume",
+            description: "Set music volume",
             options: [
                 {
                     name: "amount",

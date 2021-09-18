@@ -5,7 +5,7 @@ module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "playnext",
-            description: "Adds a song to the top of the queue",
+            description: "Add a song to the top of the queue",
             options: [
                 {
                     name: "query",

@@ -4,7 +4,7 @@ module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "seek",
-            description: "Seeks to the given time",
+            description: "Seek to the given time",
             options: [
                 {
                     name: "time",

@@ -4,7 +4,7 @@ module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: "jump",
-            description: "Jumps to a specific track",
+            description: "Jump to a specific track",
             options: [
                 {
                     name: "tracks",
