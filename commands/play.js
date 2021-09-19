@@ -52,6 +52,10 @@ module.exports = class extends SlashCommand {
 
         await ctx.sendFollowUp({ content: `⏱ | Loading your ${searchResult.playlist ? 'playlist' : 'track'}...` });
         searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
+        
+        // Auto skip
+        queue.skip();
+        
         if (!queue.playing) await queue.play();
     }
 };
