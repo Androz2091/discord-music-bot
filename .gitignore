@@ -1,4 +1,7 @@
 # Node
 node_modules
 .env
+package-lock.json
 
+# tests
+test

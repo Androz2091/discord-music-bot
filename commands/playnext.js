@@ -1,16 +1,16 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
-const { QueryType } = require('discord-player');
+const { QueryType } = require('discord-player');
 
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "playnext",
-            description: "Adds a song to the top of the queue",
+            name: 'playnext',
+            description: 'Add a song to the top of the queue',
             options: [
                 {
-                    name: "query",
+                    name: 'query',
                     type: CommandOptionType.STRING,
-                    description: "The song you want to play next",
+                    description: 'The song you want to play next',
                     required: true
                 }
             ],
@@ -26,7 +26,7 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
 
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
 
         const query = ctx.options.query;
         const searchResult = await client.player
@@ -35,11 +35,11 @@ module.exports = class extends SlashCommand {
                 searchEngine: QueryType.AUTO
             })
             .catch(() => {
-                console.log('he')
+                console.log('he');
             });
 
-        if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: "No results were found!" });
+        if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: 'No results were found!' });
         queue.insert(searchResult.tracks[0]); 
-	await ctx.sendFollowUp({ content: `⏱ | Loading your track...` });
+        await ctx.sendFollowUp({ content: '⏱ | Loading your track...' });
     }
-}
+};

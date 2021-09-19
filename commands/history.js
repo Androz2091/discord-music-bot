@@ -3,13 +3,13 @@ const { SlashCommand, CommandOptionType} = require('slash-create');
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: 'queue',
-            description: 'See the queue',
+            name: 'history',
+            description: 'Display the queue history',
             options: [
                 {
                     name: 'page',
                     type: CommandOptionType.INTEGER,
-                    description: 'Specific page number in queue',
+                    description: 'Specific page number in queue history',
                     required: false
                 }
             ],
@@ -26,20 +26,20 @@ module.exports = class extends SlashCommand {
         const queue = client.player.getQueue(ctx.guildID);
         if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
         if (!ctx.options.page) ctx.options.page = 1;
-        const pageStart = 10 * (ctx.options.page - 1);
-        const pageEnd = pageStart + 10;
+        const pageEnd = (-10 * (ctx.options.page - 1)) - 1;
+        const pageStart = (pageEnd - 10);
         const currentTrack = queue.current;
-        const tracks = queue.tracks.slice(pageStart, pageEnd).map((m, i) => {
-            return `${i + pageStart + 1}. **${m.title}** ([link](${m.url}))`;
+        const tracks = queue.previousTracks.slice(pageStart, pageEnd).reverse().map((m, i) => {
+            return `${i + (pageEnd * -1)}. **${m.title}** ([link](${m.url}))`;
         });
 
         return void ctx.sendFollowUp({
             embeds: [
                 {
-                    title: 'Server Queue',
+                    title: 'Server Queue History',
                     description: `${tracks.join('\n')}${
-                        queue.tracks.length > pageEnd
-                            ? `\n...${queue.tracks.length - pageEnd} more track(s)`
+                        queue.previousTracks.length > (pageStart * -1)
+                            ? `\n...${(queue.previousTracks.length + pageStart)} more track(s)`
                             : ''
                     }`,
                     color: 0xff0000,

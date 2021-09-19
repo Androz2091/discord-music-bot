@@ -3,12 +3,12 @@ const { SlashCommand, CommandOptionType } = require('slash-create');
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "jump",
-            description: "Jumps to a specific track",
+            name: 'jump',
+            description: 'Jump to a specific track',
             options: [
                 {
-                    name: "tracks",
-                    description: "The number of tracks to skip",
+                    name: 'tracks',
+                    description: 'The number of tracks to skip',
                     type: CommandOptionType.INTEGER
                 }
             ],
@@ -24,7 +24,7 @@ module.exports = class extends SlashCommand {
         await ctx.defer();
 
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
         
         const trackIndex = ctx.options.tracks - 1;
         const trackName = queue.tracks[trackIndex].title;
@@ -32,4 +32,4 @@ module.exports = class extends SlashCommand {
 
         ctx.sendFollowUp({ content: `⏭ | **${trackName}** has jumped the queue!` });
     }
-}
+};

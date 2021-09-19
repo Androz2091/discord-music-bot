@@ -1,32 +1,32 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
-const { QueueRepeatMode } = require('discord-player');
+const { QueueRepeatMode } = require('discord-player');
 
 module.exports = class extends SlashCommand {
     constructor(creator) {
         super(creator, {
-            name: "loop",
-            description: "Sets loop mode",
+            name: 'loop',
+            description: 'Set loop mode',
             options: [
                 {
-                    name: "mode",
+                    name: 'mode',
                     type: CommandOptionType.INTEGER,
-                    description: "Loop type",
+                    description: 'Loop type',
                     required: true,
                     choices: [
                         {
-                            name: "Off",
+                            name: 'Off',
                             value: QueueRepeatMode.OFF
                         },
                         {
-                            name: "Track",
+                            name: 'Track',
                             value: QueueRepeatMode.TRACK
                         },
                         {
-                            name: "Queue",
+                            name: 'Queue',
                             value: QueueRepeatMode.QUEUE
                         },
                         {
-                            name: "Autoplay",
+                            name: 'Autoplay',
                             value: QueueRepeatMode.AUTOPLAY
                         }
                     ]
@@ -43,10 +43,10 @@ module.exports = class extends SlashCommand {
 
         await ctx.defer();
         const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: "❌ | No music is being played!" });
+        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
         const loopMode = ctx.options.mode;
         const success = queue.setRepeatMode(loopMode);
-        const mode = loopMode === QueueRepeatMode.TRACK ? "🔂" : loopMode === QueueRepeatMode.QUEUE ? "🔁" : "▶";
-        return void ctx.sendFollowUp({ content: success ? `${mode} | Updated loop mode!` : "❌ | Could not update loop mode!" });
+        const mode = loopMode === QueueRepeatMode.TRACK ? '🔂' : loopMode === QueueRepeatMode.QUEUE ? '🔁' : '▶';
+        return void ctx.sendFollowUp({ content: success ? `${mode} | Updated loop mode!` : '❌ | Could not update loop mode!' });
     }
-}
+};

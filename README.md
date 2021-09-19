@@ -16,25 +16,26 @@ The perfect music bot for your Discord server! 🎶
 
 Here are all the available commands in the bot!
 
-|      Name      |             Description             |  Options  |
-|:---------------|:-----------------------------------:|----------:|
-|   **/back**    |      Plays the previous track       |           |
-| **/bassboost** |      Toggles bassboost filter       |           |
-|   **/clear**   |      Clear the current queue.       |           |
-|   **/jump**    |      Jumps to a specific track      | \<tracks> |
-|   **/loop**    |           Sets loop mode            |  \<mode>  |
-|    **/np**     |  See what's currently being played  |           |
-|   **/pause**   |       Pause the current song        |           |
-|   **/play**    |      Plays a song from youtube      | \<query>  |
-| **/playnext**  | Adds a song to the top of the queue | \<query>  |
-|   **/queue**   |            See the queue            |  \<page>  |
-|  **/remove**   |       Remove a specific track       | \<track>  |
-|  **/resume**   |       Resume the current song       |           |
-|   **/seek**    |       Seeks to the given time       |  \<time>  |
-|  **/shuffle**  |         Shuffles the queue          |           |
-|   **/skip**    |      Skip to the current song       |           |
-|   **/stop**    |           Stop the player           |           |
-|  **/volume**   |          Sets music volume          | \<amount> |
+|      Name      |            Description             |  Options  |
+|:---------------|:----------------------------------:|----------:|
+|   **/back**    |      Play the previous track       |           |
+| **/bassboost** |      Toggle bassboost filter       |           |
+|   **/clear**   |      Clear the current queue.      |           |
+|  **/history**  |     Display the queue history      |  \<page>  |
+|   **/jump**    |      Jump to a specific track      | \<tracks> |
+|   **/loop**    |           Set loop mode            |  \<mode>  |
+|    **/np**     | See what's currently being played  |           |
+|   **/pause**   |       Pause the current song       |           |
+|   **/play**    |      Play a song from youtube      | \<query>  |
+| **/playnext**  | Add a song to the top of the queue | \<query>  |
+|   **/queue**   |           See the queue            |  \<page>  |
+|  **/remove**   |      Remove a specific track       | \<track>  |
+|  **/resume**   |      Resume the current song       |           |
+|   **/seek**    |       Seek to the given time       |  \<time>  |
+|  **/shuffle**  |         Shuffle the queue          |           |
+|   **/skip**    |      Skip to the current song      |           |
+|   **/stop**    |          Stop the player           |           |
+|  **/volume**   |          Set music volume          | \<amount> |
 
 ## About
 
@@ -55,7 +56,7 @@ The project uses the following libraries:
  - `DISCORD_CLIENT_ID` is the ID of your Discord BOT
  - `DISCORD_CLIENT_TOKEN` is the token of your Discord BOT
 * Install the dependencies. (`yarn install` or `npm install`)
-* Start the bot! (`node .`)
+* Start the bot! (`yarn start` or `npm start` or `node .`)
 
 ### Docker 
 * Copy the `.env.example` file as `.env` and fill it.
