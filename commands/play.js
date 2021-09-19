@@ -52,11 +52,22 @@ module.exports = class extends SlashCommand {
 
         await ctx.sendFollowUp({ content: `⏱ | Loading your ${searchResult.playlist ? 'playlist' : 'track'}...` });
         searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
+
+/*
+/loop mode:off
+/play Iz9RUw7NwDY
+/skip
+/loop mode:on
+*/
+
+        // Auto set loop off
+        queue.setRepeatMode( QueueRepeatMode.OFF );
         
+        // Play
+        if (!queue.playing) await queue.play();
+
         // Auto skip
         queue.skip();
-        
-        if (!queue.playing) await queue.play();
 
         // Auto set loop
         queue.setRepeatMode( QueueRepeatMode.TRACK );
