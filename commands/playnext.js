@@ -40,6 +40,6 @@ module.exports = class extends SlashCommand {
 
         if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: "No results were found!" });
         queue.insert(searchResult.tracks[0]); 
-
+	await ctx.sendFollowUp({ content: `⏱ | Loading your track...` });
     }
 }
