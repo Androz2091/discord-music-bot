@@ -1,5 +1,5 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
-const { QueryType } = require('discord-player');
+const { QueryType, QueueRepeatMode } = require('discord-player');
 
 module.exports = class extends SlashCommand {
     constructor(creator) {
@@ -57,5 +57,8 @@ module.exports = class extends SlashCommand {
         queue.skip();
         
         if (!queue.playing) await queue.play();
+
+        // Auto set loop
+        queue.setRepeatMode( QueueRepeatMode.TRACK );
     }
 };
