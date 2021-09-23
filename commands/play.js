@@ -38,7 +38,7 @@ module.exports = class extends SlashCommand {
             });
         if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: 'No results were found!' });
 
-        const queue = await client.player.createQueue(guild, {
+        let queue = await client.player.createQueue(guild, {
             metadata: channel
         });
 
@@ -51,7 +51,7 @@ module.exports = class extends SlashCommand {
         }
 
         await ctx.sendFollowUp({ content: `⏱ | Loading your ${searchResult.playlist ? 'playlist' : 'track'}...` });
-        searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.addTrack(searchResult.tracks[0]);
+        searchResult.playlist ? queue.addTracks(searchResult.tracks) : queue.insert(searchResult.tracks[0]);
 
 /*
 /loop mode:off
@@ -60,16 +60,35 @@ module.exports = class extends SlashCommand {
 /loop mode:on
 */
 
-        // Auto set loop off
-        queue.setRepeatMode( QueueRepeatMode.OFF );
-        
-        // Play
-        if (!queue.playing) await queue.play();
+       queue = client.player.getQueue(ctx.guildID);
 
-        // Auto skip
-        queue.skip();
+
+        // Play
+        if (!queue.playing) {
+
+           await queue.play();
+
+       } else {
+
+        // Turn off loop
+        queue.setRepeatMode( 0 );
+
+        // Skip track
+        const currentTrack = queue.current;
+        const success = queue.skip();
+
+        // You HAVE TO await this context update or nothing works.
+        await ctx.sendFollowUp({
+            content: success ? `✅ | Skipped **${currentTrack}**!` : '❌ | Something went wrong!'
+        });
+
+        // Turn looping back on again.
+        // This must be done here, probably because it has to be done aftter the conext update.
+        queue.setRepeatMode( 1 );
+
+       }
 
         // Auto set loop
-        queue.setRepeatMode( QueueRepeatMode.TRACK );
+        queue.setRepeatMode( 1 );
     }
 };
