@@ -35,7 +35,7 @@ module.exports = class extends SlashCommand {
         } catch (_) {
             isLink = false; 
         }
-        if (isLink && !String(query).includes("youtube.com") && !String(query).includes("youtu.be") && !String(query).includes("fb.watch") && !String(query).includes("fb.gg") && !String(query).includes("facebook.com") && !String(query).includes("vimeo.com")) return void ctx.sendFollowUp({ content: 'This bot only supports YouTube, Facebook and Vimeo!\nIf you think that this is an error please contact <@' + process.env.DISCORD_CONTACT_PERSION_ID + '>.' });
+        if (isLink && !String(query).includes("youtube.com") && !String(query).includes("youtu.be") && !String(query).includes("fb.watch") && !String(query).includes("fb.gg") && !String(query).includes("facebook.com") && !String(query).includes("vimeo.com")) return void ctx.sendFollowUp({ content: 'This bot only supports YouTube, Facebook and Vimeo!\nIf you think that this is an error please contact <@429776328833761280>.' });
         const searchResult = await client.player
             .search(query, {
                 requestedBy: ctx.user,
