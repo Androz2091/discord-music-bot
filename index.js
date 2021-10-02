@@ -15,7 +15,7 @@ const client = new Client({
     ]
 });
 
-client.player = new Player(client, { initialVolume: 10 });
+client.player = new Player(client);
 registerPlayerEvents(client.player);
 
 const creator = new SlashCreator({
