@@ -3,7 +3,7 @@ WORKDIR discord-music-bot
 RUN apk add ffmpeg
 
 COPY . .
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 CMD yarn start
 
