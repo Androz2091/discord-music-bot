@@ -47,6 +47,11 @@ module.exports = class extends SlashCommand {
         if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: 'No results were found!' });
 
         const queue = await client.player.createQueue(guild, {
+            ytdlOptions: {
+                filter: 'audioonly',
+                highWaterMark: 1 << 25,
+                dlChunkSize: 0,
+            },
             metadata: channel
         });
 
