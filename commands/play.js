@@ -37,8 +37,13 @@ module.exports = class extends SlashCommand {
                 console.log('he');
             });
         if (!searchResult || !searchResult.tracks.length) return void ctx.sendFollowUp({ content: 'No results were found!' });
-
+         // This added part should be credited to https://github.com/nitpum, who identified the bulk of this fix :)
         const queue = await client.player.createQueue(guild, {
+            ytdlOptions: {
+                filter: 'audioonly',
+                highWaterMark: 1 << 30,
+                dlChunkSize: 0,
+            },
             metadata: channel
         });
 
