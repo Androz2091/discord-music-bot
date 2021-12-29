@@ -24,6 +24,7 @@ Here are all the available commands in the bot!
 |  **/history**  |     Display the queue history      |  \<page>  |
 |   **/jump**    |      Jump to a specific track      | \<tracks> |
 |   **/loop**    |           Set loop mode            |  \<mode>  |
+| **/nightcore** |      Toggle nightcore filter       |           |
 |    **/np**     | See what's currently being played  |           |
 |   **/pause**   |       Pause the current song       |           |
 |   **/play**    |      Play a song from youtube      | \<query>  |
@@ -31,6 +32,7 @@ Here are all the available commands in the bot!
 |   **/queue**   |           See the queue            |  \<page>  |
 |  **/remove**   |      Remove a specific track       | \<track>  |
 |  **/resume**   |      Resume the current song       |           |
+|  **/search**   |           Search youtube           | \<query>  |
 |   **/seek**    |       Seek to the given time       |  \<time>  |
 |  **/shuffle**  |         Shuffle the queue          |           |
 |   **/skip**    |      Skip to the current song      |           |
