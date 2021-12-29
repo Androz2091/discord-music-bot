@@ -38,8 +38,15 @@ creator
     )
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-if (process.env.DISCORD_GUILD_ID) creator.syncCommandsIn(process.env.DISCORD_GUILD_ID);
-else creator.syncCommands();
+
+if (process.env.DISCORD_GUILD_ID) {
+    creator.syncCommandsIn(process.env.DISCORD_GUILD_ID)
+        .then(() => creator.syncCommandPermissions());
+} else {
+    creator.syncCommands()
+        .then(() => creator.syncCommandPermissions());
+}
+    
 
 client.login(process.env.DISCORD_CLIENT_TOKEN);
 
