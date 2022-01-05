@@ -5,7 +5,7 @@ const { Client } = require('discord.js');
 const { Player } = require('discord-player');
 const { registerPlayerEvents } = require('./events');
 const { generateDocs } = require('./docs');
-const getGuilsIds = require('./utils/getGuildIds');
+const getGuildIds = require('./utils/getGuildIds');
 
 dotenv.config();
 
