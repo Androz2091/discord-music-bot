@@ -1,5 +1,6 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
 const { QueryType } = require('discord-player');
+const getGuilsIds = require('../utils/getGuildIds');
 
 module.exports = class extends SlashCommand {
     constructor(creator) {
@@ -15,7 +16,7 @@ module.exports = class extends SlashCommand {
                 }
             ],
 
-            guildIDs: process.env.DISCORD_GUILD_ID ? [ process.env.DISCORD_GUILD_ID ] : undefined
+            guildIDs: getGuilsIds()
         });
     }
 

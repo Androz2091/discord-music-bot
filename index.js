@@ -5,6 +5,7 @@ const { Client } = require('discord.js');
 const { Player } = require('discord-player');
 const { registerPlayerEvents } = require('./events');
 const { generateDocs } = require('./docs');
+const getGuildIds = require('./utils/getGuildIds');
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ client.on('ready', () => {
 
     console.log('Generating docs...');
     generateDocs(creator.commands);
+    console.log('Docs generated!');
 });
 
 creator
@@ -38,8 +40,13 @@ creator
     )
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-if (process.env.DISCORD_GUILD_ID) creator.syncCommandsIn(process.env.DISCORD_GUILD_ID);
-else creator.syncCommands();
+const guildIds = getGuildIds();
+if (guildIds && guildIds.length > 0) {
+    const syncPromises = guildIds.map((id) => creator.syncCommandsIn(id));
+    Promise.all(syncPromises).then(() => console.log('Commands synced'));
+} else {
+    creator.syncCommandsAsync().then(() => console.log('Commands synced'));
+}
 
 client.login(process.env.DISCORD_CLIENT_TOKEN);
 
