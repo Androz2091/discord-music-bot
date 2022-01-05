@@ -42,7 +42,7 @@ creator
 
 const guildIds = getGuildIds();
 if (guildIds && guildIds.length > 0) {
-    const syncPromises = guildIds.map(() => creator.syncCommandsIn(process.env.DISCORD_GUILD_ID));
+    const syncPromises = guildIds.map((id) => creator.syncCommandsIn(id));
     Promise.all(syncPromises).then(() => console.log('Commands synced'));
 } else {
     creator.syncCommandsAsync().then(() => console.log('Commands synced'));
