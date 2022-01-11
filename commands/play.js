@@ -49,7 +49,7 @@ module.exports = class extends SlashCommand {
         const queue = await client.player.createQueue(guild, {
             ytdlOptions: {
                 filter: 'audioonly',
-                highWaterMark: 1 << 25,
+                highWaterMark: 1 << 30,
                 dlChunkSize: 0,
             },
             metadata: channel
