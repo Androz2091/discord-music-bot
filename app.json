@@ -30,7 +30,7 @@
         "required": "true"
       },
      "DISCORD_GUILD_ID": {
-         "description": "The id's of channel where you want to make the bot play music
+         "description": "The id's of channel where you want to make the bot play music"
       }
     }
   }
