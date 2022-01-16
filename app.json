@@ -1,0 +1,36 @@
+{
+    "name": "Discord-Music-Bot",
+    "description": "The perfect music bot for your Discord server! 🤘",
+    "repository": "https://github.com/Androz2091/discord-music-bot",
+    "keywords": [
+      "node",
+      "discord",
+      "youtube",
+      "music",
+      "bot",
+      "lavalink",
+    ],
+    "image": "heroku/nodejs",
+    "buildpacks": [
+      {
+        "url": "heroku/nodejs"
+      }
+    ],
+    "env": {
+      "DISCORD_CLIENT_TOKEN": {
+        "description": "The Discord Bot Token (https://discord.com/developers/applications)",
+        "required": "true"
+      },
+      "DISCORD_CLIENT_ID": {
+        "description": "Client ID,get this from discord API portal",
+        "required": "true"
+      },
+     "DISCORD_CLIENT_PUBKEY": {
+        "description": "Public key,get this from discord API portal",
+        "required": "true"
+      },
+     "DISCORD_GUILD_ID": {
+         "description": "The id's of channel where you want to make the bot play music"
+      }
+    }
+  }
