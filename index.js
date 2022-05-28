@@ -15,7 +15,22 @@ const client = new Client({
     ]
 });
 
-client.player = new Player(client);
+const playerOptions = {};
+
+if (process.env.YOUTUBE_COOKIE) {
+    playerOptions.ytdlOptions = {
+        requestOptions: {
+            headers: {
+                cookie: process.env.YOUTUBE_COOKIE,
+            },
+        },
+    };
+}
+
+client.player = new Player(
+    client,
+    playerOptions,
+);
 registerPlayerEvents(client.player);
 
 const creator = new SlashCreator({
