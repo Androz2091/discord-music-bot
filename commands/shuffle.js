@@ -1,26 +1,26 @@
 const { SlashCommand } = require('slash-create');
 
 module.exports = class extends SlashCommand {
-    constructor(creator) {
-        super(creator, {
-            name: 'shuffle',
-            description: 'Shuffle the queue',
+  constructor(creator) {
+    super(creator, {
+      name: 'shuffle',
+      description: 'Shuffle the queue',
 
-            guildIDs: process.env.DISCORD_GUILD_ID ? [ process.env.DISCORD_GUILD_ID ] : undefined
-        });
-    }
+      guildIDs: process.env.DISCORD_GUILD_ID ? [ process.env.DISCORD_GUILD_ID ] : undefined
+    });
+  }
 
-    async run (ctx) {
+  async run (ctx) {
 
-        const { client } = require('..');
+    const { client } = require('..');
 
-        await ctx.defer();
+    await ctx.defer();
 
-        const queue = client.player.getQueue(ctx.guildID);
-        if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
-        
-        await queue.shuffle();
-        
-        ctx.sendFollowUp({ content: '✅ | Queue has been shuffled!' });
-    }
+    const queue = client.player.getQueue(ctx.guildID);
+    if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
+    
+    await queue.shuffle();
+    
+    ctx.sendFollowUp({ content: '✅ | Queue has been shuffled!' });
+  }
 };
