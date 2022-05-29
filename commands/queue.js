@@ -1,4 +1,7 @@
 const { SlashCommand, CommandOptionType} = require('slash-create');
+var numeral = require('numeral');
+const createPlayer = require('../helpers/createPlayer');
+const handleError = require('../helpers/handleError');
 
 const PAGE_SIZE = 10;
 
@@ -21,38 +24,43 @@ module.exports = class extends SlashCommand {
   }
 
   async run(ctx) {
-    
-    const { client } = require('..');
-    
-    await ctx.defer();
-    const queue = client.player.getQueue(ctx.guildID);
-    if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
-    const curPage = ctx.options.page || 1;
-    const pageStart = PAGE_SIZE * (curPage - 1);
-    const pageEnd = pageStart + PAGE_SIZE;
-    const currentTrack = queue.current;
-    const tracks = queue.tracks.slice(pageStart, pageEnd).map((m, i) => {
-      return `${i + pageStart + 1}. **${m.title}** ([link](${m.url}))`;
-    });
-    const totalPages = Math.ceil(queue.tracks.length / PAGE_SIZE);
+    try {
+      await ctx.defer();
 
-    return void ctx.sendFollowUp({
-      embeds: [
-        {
-          title: 'Server Queue',
-          description: `${tracks.join('\n')}${
-            queue.tracks.length > pageEnd
-              ? `\n...${queue.tracks.length - pageEnd} more track(s)`
-              : ''
-          }`,
-          color: 0xff0000,
-          fields: [
-            { name: 'Page', value: `${curPage} / ${totalPages}` },
-            { name: 'Now Playing', value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.url}))` }
+      const player = await createPlayer(ctx);
+      if (!player.playing) {
+        return void ctx.sendFollowUp({ content: '❌ | No music in the queue!' })
+      }
+
+      const curPage = ctx.options.page || 1;
+      const pageStart = PAGE_SIZE * (curPage - 1);
+      const pageEnd = pageStart + PAGE_SIZE;
+      const currentTrack = player.queue.current;
+      const tracks = player.queue.slice(pageStart, pageEnd).map((m, i) => {
+        return `${i + pageStart + 1}. **${m.title}** ([link](${m.uri}))`;
+      });
+      const totalPages = Math.ceil(player.queue.length / PAGE_SIZE);
+
+      return void ctx.sendFollowUp({
+          embeds: [
+            {
+              title: 'Server Queue',
+              description: `${tracks.join('\n')}${
+                player.queue.length > pageEnd
+                  ? `\n...${player.queue.length - pageEnd} more track(s)`
+                  : ''
+              }`,
+              color: 0xff0000,
+              fields: [
+                { name: 'Page', value: `${curPage} / ${totalPages}` },
+                { name: 'Length', value: `${numeral(player.queue.duration / 1000).format('00:00:00')}` },
+                { name: 'Now Playing', value: `🎶 | **${currentTrack.title}** ([link](${currentTrack.uri}))` }
+              ]
+            }
           ]
-        }
-      ]
-    });
-
+        });
+    } catch (err) {
+      handleError(err, ctx, 'queue');
+    }
   }
 };

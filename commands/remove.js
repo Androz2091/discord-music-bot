@@ -1,4 +1,6 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
+const createPlayer = require('../helpers/createPlayer');
+const handleError = require('../helpers/handleError');
 
 module.exports = class extends SlashCommand {
   constructor(creator) {
@@ -19,18 +21,21 @@ module.exports = class extends SlashCommand {
   }
 
   async run (ctx) {
+    try {
+      await ctx.defer();
 
-    const { client } = require('..');
+      const player = await createPlayer(ctx);
+      if (!player.playing) {
+        return void ctx.sendFollowUp({ content: '❌ | No music in the queue!' })
+      }
 
-    await ctx.defer();
+      const trackIndex = ctx.options.track - 1;
+      const trackName = player.queue[trackIndex].title;
+      player.queue.remove(trackIndex);
 
-    const queue = client.player.getQueue(ctx.guildID);
-    if (!queue) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
-    
-    const trackIndex = ctx.options.track - 1;
-    const trackName = queue.tracks[trackIndex].title;
-    queue.remove(trackIndex);
-
-    ctx.sendFollowUp({ content: `❌ | Removed track ${trackName}.` });
+      ctx.sendFollowUp({ content: `❌ | Removed track ${trackName}.` });
+    } catch (err) {
+      handleError(err, ctx, 'remove');
+    }
   }
 };

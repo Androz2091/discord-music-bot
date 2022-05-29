@@ -1,4 +1,6 @@
 const { SlashCommand } = require('slash-create');
+const createPlayer = require('../helpers/createPlayer');
+const handleError = require('../helpers/handleError');
 
 module.exports = class extends SlashCommand {
   constructor(creator) {
@@ -11,16 +13,19 @@ module.exports = class extends SlashCommand {
   }
 
   async run (ctx) {
+    try {
+      await ctx.defer();
 
-    const { client } = require('..');
+      const player = await createPlayer(ctx);
+      if (!player.playing) {
+        return void ctx.sendFollowUp({ content: '❌ | No music in the queue!' })
+      }
 
-    await ctx.defer();
+      player.queue.shuffle();
 
-    const queue = client.player.getQueue(ctx.guildID);
-    if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
-    
-    await queue.shuffle();
-    
-    ctx.sendFollowUp({ content: '✅ | Queue has been shuffled!' });
+      ctx.sendFollowUp({ content: '✅ | Queue has been shuffled!' });
+    } catch (err) {
+      handleError(err, ctx, 'shuffle');
+    }
   }
 };

@@ -1,6 +1,5 @@
 FROM node:alpine
-WORKDIR discord-music-bot
-RUN apk add ffmpeg
+WORKDIR /discord-music-bot
 
 COPY . .
 RUN npm install --legacy-peer-deps

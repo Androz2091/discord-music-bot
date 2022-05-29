@@ -1,30 +1,25 @@
-module.exports.registerPlayerEvents = (player) => {
+module.exports.registerManagerEvents = (client) => {
+  client.manager
+  .on("nodeConnect", node => console.log(`Node ${node.options.identifier} connected`))
+  .on("nodeError", (node, error) => console.log(`Node ${node.options.identifier} had an error: ${error.message}`))
+  .on("trackStart", (player, track) => {
+    client.channels.cache
+      .get(player.textChannel)
+      .send(`🎶 | Now playing: **${track.title}**`);
+  })
+  .on("trackError", (player, track, payload) => {
+    client.channels.cache
+      .get(player.textChannel)
+      .send(`Error Playing **${track.title}**`);
 
-  player.on("error", (queue, error) => {
-    console.log(`[${queue.guild.name}] Error emitted from the queue: ${error.message}`);
-  });
-  player.on("connectionError", (queue, error) => {
-    console.log(`[${queue.guild.name}] Error emitted from the connection: ${error.message}`);
-  });
+    console.error('Error Playing Song', payload);
+  })
+  .on("queueEnd", (player) => {
+    client.channels.cache
+      .get(player.textChannel)
+      .send("✅ | Queue finished!");
 
-  player.on("trackStart", (queue, track) => {
-    queue.metadata.send(`🎶 | Now playing: **${track.title}** in **${queue.connection.channel.name}**!`);
+    player.disconnect();
+    player.destroy();
   });
-
-  player.on("trackAdd", (queue, track) => {
-    queue.metadata.send(`🎶 | Track **${track.title}** queued!`);
-  });
-
-  player.on("botDisconnect", (queue) => {
-    queue.metadata.send("❌ | I was manually disconnected from the voice channel, clearing queue!");
-  });
-
-  player.on("channelEmpty", (queue) => {
-    queue.metadata.send("❌ | Nobody is in the voice channel, leaving...");
-  });
-
-  player.on("queueEnd", (queue) => {
-    queue.metadata.send("✅ | Queue finished!");
-  });
-
 };

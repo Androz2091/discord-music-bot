@@ -1,4 +1,6 @@
 const { SlashCommand } = require('slash-create');
+const createPlayer = require('../helpers/createPlayer');
+const handleError = require('../helpers/handleError');
 
 module.exports = class extends SlashCommand {
   constructor(creator) {
@@ -11,17 +13,21 @@ module.exports = class extends SlashCommand {
   }
 
   async run(ctx) {
-    
-    const { client } = require('..');
-    
-    await ctx.defer();
-    const queue = client.player.getQueue(ctx.guildID);
-    if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
-    const currentTrack = queue.current;
-    const success = queue.skip();
-    return void ctx.sendFollowUp({
-      content: success ? `✅ | Skipped **${currentTrack}**!` : '❌ | Something went wrong!'
-    });
+    try {
+      await ctx.defer();
 
+      const player = await createPlayer(ctx);
+      if (!player.playing) {
+        return void ctx.sendFollowUp({ content: '❌ | No music in the queue!' })
+      }
+
+      const currentTrack = player.queue.current;
+
+      player.stop();
+
+      ctx.sendFollowUp({ content: `✅ | Skipped **${currentTrack.title}**!` });
+    } catch (err) {
+      handleError(err, ctx, 'skip');
+    }
   }
 };

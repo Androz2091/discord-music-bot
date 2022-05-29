@@ -1,4 +1,7 @@
 const { SlashCommand } = require('slash-create');
+const numeral = require('numeral');
+const createPlayer = require('../helpers/createPlayer');
+const handleError = require('../helpers/handleError');
 
 module.exports = class extends SlashCommand {
   constructor(creator) {
@@ -11,30 +14,27 @@ module.exports = class extends SlashCommand {
   }
 
   async run (ctx) {
+    try {
+      await ctx.defer();
 
-    const { client } = require('..');
+      const player = await createPlayer(ctx);
+      if (!player.playing) {
+        return void ctx.sendFollowUp({ content: '❌ | No music is being played!' })
+      }
 
-    await ctx.defer();
+      const elapsedTime = `${numeral(player.position / 1000).format('00:00:00')}/${numeral(player.queue.current.duration / 1000).format('00:00:00')}`
 
-    const queue = client.player.getQueue(ctx.guildID);
-    if (!queue || !queue.playing) return void ctx.sendFollowUp({ content: '❌ | No music is being played!' });
-    const progress = queue.createProgressBar();
-    const perc = queue.getPlayerTimestamp();
-
-    return void ctx.sendFollowUp({
-      embeds: [
-        {
-          title: 'Now Playing',
-          description: `🎶 | **${queue.current.title}**! (\`${perc.progress == 'Infinity' ? 'Live' : perc.progress + '%'}\`)`,
-          fields: [
-            {
-              name: '\u200b',
-              value: progress.replace(/ 0:00/g, ' ◉ LIVE')
-            }
-          ],
-          color: 0xffffff
-        }
-      ]
-    });
+      return void ctx.sendFollowUp({
+        embeds: [
+          {
+            title: 'Now Playing',
+            description: `🎶 | **${player.queue.current.title}**! (${elapsedTime}))`,
+            color: 0xffffff
+          }
+        ]
+      });
+    } catch (err) {
+      handleError(err, ctx, 'np');
+    }
   }
 };
