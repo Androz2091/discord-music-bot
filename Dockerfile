@@ -1,9 +1,11 @@
-FROM node:alpine
+FROM node:lts
+
 WORKDIR discord-music-bot
-RUN apk add ffmpeg
+
+RUN apt update && apt install ffmpeg -y
 
 COPY . .
-RUN npm install
+RUN npm ci
 
-CMD yarn start
+CMD npm start
 
