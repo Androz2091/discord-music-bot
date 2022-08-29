@@ -8,3 +8,5 @@ test
 
 # Docker 
 docker-compose.yml
+
+.DS_Store

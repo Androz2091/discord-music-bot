@@ -1,0 +1,4 @@
+services:
+  music-bot:
+    platform: linux/amd64
+    image: registry.digitalocean.com/mikes-images/dj-jimmy:latest
