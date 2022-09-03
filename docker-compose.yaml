@@ -1,4 +1,5 @@
 services:
   music-bot:
     platform: linux/amd64
+    restart: always
     image: registry.digitalocean.com/mikes-images/dj-jimmy:latest
