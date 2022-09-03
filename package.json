@@ -12,14 +12,14 @@
   "dependencies": {
     "@discord-player/downloader": "^3.0.1",
     "@discord-player/extractor": "^3.0.2",
-    "@discordjs/opus": "^0.6.0",
-    "discord-player": "^5.1.0",
+    "@discordjs/opus": "0.7.0",
+    "discord-player": "^5.2.2",
     "discord.js": "^13.1.0",
-    "dotenv": "^10.0.0",
-    "slash-create": "^4.0.1"
+    "dotenv": "16.0.1",
+    "slash-create": "5.6.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
+    "eslint": "^8.17.0",
     "mdtable": "^0.3.1"
   }
 }

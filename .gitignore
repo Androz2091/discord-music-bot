@@ -1,7 +1,11 @@
 # Node
 node_modules
 .env
-package-lock.json
 
 # tests
 test
+
+# Docker 
+docker-compose.yml
+
+.DS_Store
